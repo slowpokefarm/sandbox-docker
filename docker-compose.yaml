@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  sandbox:
+    container_name: sandbox
+    env_file:
+      - .env
+    build:
+      context: ./image
+      args:
+        - SSH_PORT=${SSH_PORT}
+    image: sandbox:latest
+    volumes:
+      - ./data/home:/home
+      - ./data/supervisor:/etc/supervisor/conf.d
+      - ./logs/supervisor:/var/log/supervisor
+      - ./logs/sshd:/var/log/sshd
+    ports:
+      - ${SSH_PORT}:22
