@@ -10,6 +10,7 @@ RUN sed -i -e 's/http:\/\/archive/mirror:\/\/mirrors/' -e 's/\/ubuntu\//\/mirror
 
 RUN apt-get update  && \
     apt-get install -y \
+    sudo \
     git \
     mc \
     supervisor \
